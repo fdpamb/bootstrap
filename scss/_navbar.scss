@@ -10,6 +10,7 @@
 @use "mixins/deprecate" as *;
 @use "vendor/rfs" as *;
 @use "layout/breakpoints" as *;
+@use "buttons/button-variables" as *; // mdo-do: remove?
 
 // scss-docs-start navbar-variables
 $navbar-padding-y:                  $spacer * .5 !default;
@@ -31,7 +32,7 @@ $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
 $navbar-toggler-font-size:          $font-size-lg !default;
 $navbar-toggler-border-radius:      $btn-border-radius !default;
-$navbar-toggler-focus-width:        $btn-focus-width !default;
+$navbar-toggler-focus-width:        null !default; // mdo-do: fix
 $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
 $navbar-light-color:                color-mix(in srgb, var(--#{$prefix}fg-black) 65%, transparent) !default;

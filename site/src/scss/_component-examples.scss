@@ -78,7 +78,6 @@
     }
 
     // Buttons
-    > .btn,
     > .btn-group {
       margin: .25rem .125rem;
     }
@@ -356,7 +355,7 @@
   .highlight {
     position: relative;
     padding: .75rem ($bd-gutter-x * .5);
-    background-color: var(--bd-pre-bg);
+    // background-color: var(--bd-pre-bg);
 
     @include media-breakpoint-up(md) {
       padding: 1rem;

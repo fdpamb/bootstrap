@@ -43,7 +43,7 @@ Consider margin utilities for additional spacing, and flex utilities for alignme
 Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.switch` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <b-checkgroup>
-    <div class="switch switch-sm mt-1 checked-${themeColor.name}">
+    <div class="switch switch-sm mt-1 theme-${themeColor.name}">
       <input type="checkbox" value="" id="switch${themeColor.name}" switch checked>
     </div>
     <label for="switch${themeColor.name}">Example ${themeColor.name} switch</label>
