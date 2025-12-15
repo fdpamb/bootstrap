@@ -1,8 +1,9 @@
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/transition" as *;
+@use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
+@use "mixins/transition" as *;
 @use "vendor/rfs" as *;
 
 // scss-docs-start nav-variables
@@ -14,7 +15,6 @@ $nav-link-color:                    var(--#{$prefix}link-color) !default;
 $nav-link-hover-color:              var(--#{$prefix}link-hover-color) !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           var(--#{$prefix}secondary-color) !default;
-$nav-link-focus-box-shadow:         $focus-ring-box-shadow !default;
 
 $nav-tabs-border-color:             var(--#{$prefix}border-color) !default;
 $nav-tabs-border-width:             var(--#{$prefix}border-width) !default;
@@ -75,7 +75,7 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
     &:focus-visible {
       outline: 0;
-      box-shadow: $nav-link-focus-box-shadow;
+      @include focus-ring(true);
     }
 
     // Disabled state lightens text
