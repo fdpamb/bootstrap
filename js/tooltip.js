@@ -74,7 +74,7 @@
   var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z]+=*$/i
 
   function allowedAttribute(attr, allowedAttributeList) {
-    const attrName = attr.nodeName.toLowerCase()
+    var attrName = attr.nodeName.toLowerCase()
 
     if (allowedAttributeList.indexOf(attrName) !== -1) {
       if (uriAttrs.indexOf(attrName) !== -1) {
@@ -84,10 +84,12 @@
       return true
     }
 
-    const regExp = allowedAttributeList.filter(attrRegex => attrRegex instanceof RegExp)
+    var regExp = $(allowedAttributeList).filter(function (index, value) {
+      return value instanceof RegExp
+    })
 
     // Check if a regular expression validates the attribute.
-    for (let i = 0, len = regExp.length; i < len; i++) {
+    for (var i = 0, len = regExp.length; i < len; i++) {
       if (regExp[i].test(attrName)) {
         return true
       }
@@ -105,14 +107,14 @@
       return sanitizeFn(unsafeHtml)
     }
 
-    const domParser = new window.DOMParser()
-    const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
-    const whitelistKeys = Object.keys(whiteList)
-    const elements = [].slice.call(createdDocument.body.querySelectorAll('*'))
+    var domParser = new window.DOMParser()
+    var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
+    var whitelistKeys = Object.keys(whiteList)
+    var elements = [].slice.call(createdDocument.body.querySelectorAll('*'))
 
-    for (let i = 0, len = elements.length; i < len; i++) {
-      const el = elements[i]
-      const elName = el.nodeName.toLowerCase()
+    for (var i = 0, len = elements.length; i < len; i++) {
+      var el = elements[i]
+      var elName = el.nodeName.toLowerCase()
 
       if (whitelistKeys.indexOf(el.nodeName.toLowerCase()) === -1) {
         el.parentNode.removeChild(el)
@@ -120,15 +122,15 @@
         continue
       }
 
-      const attributeList = [].slice.call(el.attributes)
+      var attributeList = $.map(el.attributes, function (el) { return el })
       // eslint-disable-next-line unicorn/prefer-spread
-      const whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || [])
+      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || [])
 
-      attributeList.forEach(attr => {
-        if (!allowedAttribute(attr, whitelistedAttributes)) {
-          el.removeAttribute(attr.nodeName)
+      for (var j = 0, len2 = attributeList.length; j < len2; j++) {
+        if (!allowedAttribute(attributeList[j], whitelistedAttributes)) {
+          el.removeAttribute(attributeList[j].nodeName)
         }
-      })
+      }
     }
 
     return createdDocument.body.innerHTML
