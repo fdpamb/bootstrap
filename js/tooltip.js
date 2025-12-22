@@ -151,7 +151,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.4.1'
+  Tooltip.VERSION  = '3.4.3'
 
   Tooltip.TRANSITION_DURATION = 150
 
