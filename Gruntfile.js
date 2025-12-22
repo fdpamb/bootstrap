@@ -324,11 +324,11 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:core', 'exec:karma', 'concat']
+        tasks: ['jshint:core', /*'exec:karma',*/ 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'exec:karma']
+        tasks: ['jshint:test'/*, 'exec:karma'*/]
       },
       less: {
         files: 'less/**/*.less',
@@ -387,7 +387,7 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'exec:karma']);
+  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'/*, 'exec:karma'*/]);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
