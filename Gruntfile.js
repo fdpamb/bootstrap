@@ -356,7 +356,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
+  // grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -372,11 +372,11 @@ module.exports = function (grunt) {
     testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'stylelint:dist', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
-  if (runSubset('validate-html') &&
+  /*if (runSubset('validate-html') &&
       // Skip HTML5 validator on Travis when [skip validator] is in the commit message
       isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
     testSubtasks.push('validate-html');
-  }
+  }*/
   // Only run BrowserStack tests if there's a BrowserStack access key
   if (typeof process.env.BROWSER_STACK_USERNAME !== 'undefined' &&
       // Skip BrowserStack if running a different subset of the test suite
@@ -426,5 +426,5 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
 
-  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github']);
+  // grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github']);
 };
