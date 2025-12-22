@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.4.2
+ * Bootstrap: tooltip.js v3.4.3
  * https://getbootstrap.com/docs/3.4/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
