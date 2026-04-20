@@ -37,7 +37,7 @@
     "btoa": "^1.2.1",
     "cross-env": "^5.2.1",
     "glob": "^7.2.3",
-    "grunt": "^1.6.1",
+    "grunt": "^1.6.2",
     "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^2.1.0",
